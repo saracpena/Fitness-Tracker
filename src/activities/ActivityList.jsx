@@ -4,7 +4,17 @@ export default function ActivityList({ activities, deleteActivity }) { //we now 
   return (
     <ul>
       {activities.map((activity) => (
+        /**
+         * activity is one object from the activities array.
+         * activity.id is the unique id needed to delete this exact activity.
+         */
         <li key={activity.id}>{activity.name}
+          {/*
+            When clicked:
+            - call the deleteActivity function from props
+            - pass it this activity's id
+            - the parent handles the API call and refresh
+          */}
         <hr/>
         <button onClick={() => deleteActivity(activity.id)}>
           Delete Activity
