@@ -14,14 +14,17 @@ If yes, include its ID in the URL. */
 
 const API = import.meta.env.VITE_API;
 
+console.log("API =", API);
+console.log("All env vars =", import.meta.env);
+
 /** Fetches an array of activities from the API. */
 export async function getActivities() {
   try {
     const response = await fetch(API + "/activities");
     const result = await response.json();
     return result;
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return [];
   }
 }

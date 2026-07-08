@@ -45,3 +45,9 @@ ol {
 p[role="alert"] {
   color: red;
 }
+
+.error {
+  color: crimson;
+  font-weight: bold;
+}
+
