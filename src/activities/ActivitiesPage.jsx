@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { getActivities, deleteActivity } from "../api/activities"; //import newly creaeted delete function
+/** Import the API helper functions.
+// getActivities() fetches all activities.
+// deleteActivity() sends a DELETE request to the API.
+// These functions are available only inside this file.
+// If a child component needs to delete an activity,
+// we pass a callback (handleDeleteActivity) down as a prop. */
+import { getActivities, deleteActivity } from "../api/activities";
 import { useAuth } from "../auth/AuthContext"; //since the functionality is abtracted within AuthContext, let's import it and apply it.
 
 import ActivityList from "./ActivityList";
