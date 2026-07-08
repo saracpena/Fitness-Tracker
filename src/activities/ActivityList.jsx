@@ -1,6 +1,6 @@
 
 
-export default function ActivityList({ activities, deleteActivity }) { //we now want the child to be able to delete an activity which resides in parent 'ActivityPage'
+export default function ActivityList({ activities, deleteActivity, token }) { //we now want the child to be able to delete an activity which resides in parent 'ActivityPage'
   return (
     <ul>
       {activities.map((activity) => (
@@ -16,9 +16,11 @@ export default function ActivityList({ activities, deleteActivity }) { //we now 
             - the parent handles the API call and refresh
           */}
         <hr/>
+        {/* only show delete button if token exists */}
+        {token && ( 
         <button onClick={() => deleteActivity(activity.id)}>
           Delete Activity
-        </button>
+        </button> )}
         </li>
       ))}
     </ul>
