@@ -52,8 +52,9 @@ export default function ActivitiesPage() {
       </div>
       <ActivityList 
         activities={activities}
-        deleteActivity = {handleDeleteActivity} />
-        
+        deleteActivity = {handleDeleteActivity} /> {/* this passes the function down as a prop so later inside the child component we can pass activity.id to deleteActivity 
+        i.e. Child component says: “User clicked this activity.”Parent component does: “I know how to delete it and refresh state.”*/}
+
       <ActivityForm syncActivities={syncActivities} />
     </>
   );
