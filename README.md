@@ -34,3 +34,7 @@ new functions and build new components!
 ## Submission
 
 Please submit the link to your public GitHub repository.
+
+GIT COMMITS
+1. I added delete function to activities.js with my notes
+2. I update ActivitiesPage.jsx to use the token created and handle delete errors.
