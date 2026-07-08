@@ -18,6 +18,8 @@ export default function ActivitiesPage() {
 
   const [ error, setError ] = useState(null);//let's keep that error state updated in case user is not owner of activity
 
+  const [snackbar, setSnackbar] = useState(null);
+
   const syncActivities = async () => {
     const data = await getActivities();
     setActivities(data);
@@ -40,16 +42,25 @@ export default function ActivitiesPage() {
    * 4. If delete fails, save the error message in state so React can render it.
    */
 
- const handleDeleteActivity = async (activityId) => {
+const handleDeleteActivity = async (activityId) => {
   try {
     setError(null);
+    setSnackbar(null);
+
     await deleteActivity(token, activityId);
     await syncActivities();
+
+    // Show the success message
+    setSnackbar(`Activity "${activityId}" was successfully deleted.`);
+
+    // Hide it after 3 seconds
+    setTimeout(() => {
+      setSnackbar(null);
+    }, 3000);
   } catch (error) {
     setError(error.message);
   }
- };
-
+};
   return (
     <>
       <h1>Activities</h1>
@@ -63,6 +74,8 @@ export default function ActivitiesPage() {
         i.e. Child component says: “User clicked this activity.”Parent component does: “I know how to delete it and refresh state.”*/}
 
       <ActivityForm syncActivities={syncActivities} />
+
+      {snackbar && <p className="snackbar">{snackbar}</p>}
     </>
   );
 }

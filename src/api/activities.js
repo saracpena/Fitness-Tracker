@@ -73,11 +73,10 @@ export async function deleteActivity(token, activityId) {
     },//Does user/bearer own activityId?
   });
 
-  const result = await response.json();
-
   if (!response.ok) {
+    const result = await response.json();
     throw Error(result.message);
   }
 
-  return result;
+  return true;
 }
